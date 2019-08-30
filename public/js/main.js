@@ -80,7 +80,7 @@ $(document).ready( function() {
 		readURL(this);
 	}); 	
 
-	$('#list').DataTable({"paging": false});
+	$('#list').DataTable();
 	$('.dataTables_length').addClass('bs-select');
 	
 	$(".rowtest").click( function(e){

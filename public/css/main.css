@@ -453,3 +453,7 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before
     top: 17px;
     position: absolute;
 }
+
+.contactimg{
+  max-width: 100%;
+}

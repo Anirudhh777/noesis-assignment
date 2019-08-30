@@ -29,7 +29,7 @@
 				<td>{{ $contact->landline}}</td>
 				<td>{{  Carbon\Carbon::parse($contact->created_at)->format('d-m-Y') }}</td>
 			</tr>
-			<div id="contact{{$contact->id}}" class="modal fade" role="dialog">
+			<div id="contact{{$contact->id}}" class="modal fade" role="dialog" tabindex='-1'>
 				 <div class="modal-dialog">
     
 			      <!-- Modal content-->
@@ -38,7 +38,7 @@
 				      		<button type="button" class="close" data-dismiss="modal">&times;</button>
 				      	</div>
 				      	<div class="modal-body">
-				      		<img src="{{ $contact->image_url }}">
+				      		<img src="{{ $contact->image_url }}" class="contactimg">
 				      		<p>First Name: {{ $contact->first_name }}</p>
 				      		<p>Middle Name: {{ $contact->middle_name }}</p>
 				      		<p>Last Name: {{ $contact->last_name }}</p>

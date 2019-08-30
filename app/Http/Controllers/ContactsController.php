@@ -54,5 +54,28 @@ class ContactsController extends Controller
 		}else{
 			DB::table('views')->insert(['count' => 1, 'date' => $date, 'contact_id' => $id, 'created_at' =>  \Carbon\Carbon::now()]);
 		}
+	}
+
+	protected function view_history($id){
+		$date = date("Y/m/d");
+		$days = array();
+		$views = $this->count_views($id, $date);
+		$days[date("D")] = $views;
+		for ($i=1; $i < 7; $i++) { 
+			$prev_day = date("Y/m/d", strtotime('-'.$i.'days', strtotime($date)));
+			$prev_views = $this->count_views($id, $prev_day);
+			$days[date("D", strtotime('-'.$i.'days', strtotime(date("D"))))] = $prev_views;
+		}
+		Log::info($days);
+		return $days;
 	}	
+
+	protected function count_views($id, $date){
+		if(DB::table('views')->where('contact_id', $id)->where('date', $date)->exists()){
+			$view = DB::table('views')->where('contact_id', $id)->where('date', $date)->first();
+			return $view->count;
+		}else{
+			return 0;
+		}
+	}
 }
