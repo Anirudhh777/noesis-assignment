@@ -47,6 +47,7 @@ public/storage
 public/hot
 storage/*.key
 .env
+.env.noesis
 Homestead.yaml
 Homestead.json
 /.vagrant
