@@ -40,6 +40,19 @@ class ContactsController extends Controller
 	}
 
 	protected function fetch($id){
-		Log::info($id);
+		$this->update_count($id);
+		$total_views = DB::table('views')->where('contact_id', $id)->sum('count');
+		return $total_views;
+
+	}
+
+	protected function update_count($id){
+		$date = date("Y/m/d");
+		if(DB::table('views')->where('contact_id', $id)->where('date', $date)->exists()){
+			$data = DB::table('views')->where('contact_id', $id)->where('date', $date)->first();
+			DB::table('views')->where('id', $data->id)->update(['count' => $data->count + 1, 'updated_at' =>  \Carbon\Carbon::now()]);
+		}else{
+			DB::table('views')->insert(['count' => 1, 'date' => $date, 'contact_id' => $id, 'created_at' =>  \Carbon\Carbon::now()]);
+		}
 	}	
 }

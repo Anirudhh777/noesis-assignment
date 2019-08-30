@@ -14,26 +14,43 @@
 	<table class="table table-bordered table-striped " id="list">
 		<thead>
 			<tr>
-				<th >F. Name <i class="fas fa-sort ml-1"></i></th>
-				<th>L. Name <i class="fas fa-sort ml-1"></i></th>
-				<th>Email <i class="fas fa-sort ml-1"></i></th>
+				<th >Name <i class="fas fa-sort ml-1"></i></th>
 				<th>Mobile <i class="fas fa-sort ml-1"></i></th>
 				<th>Landline <i class="fas fa-sort ml-1"></i></th>
 				<th>Date <i class="fas fa-sort ml-1"></i></th>
-				<th>View</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach($contacts as $contact)
-			<tr>
-				<td>{{ $contact->first_name }}</td>
-				<td>{{ $contact->last_name }}</td>
-				<td>{{ $contact->email }}</td>
+			<input type="hidden" name="contact_id" value="{{$contact->id}}">
+			<tr data-target="#contact{{$contact->id}}" data-contact="{{$contact->id}}" class="rowtest">
+				<td>{{ $contact->first_name }} {{ $contact->last_name }}</td>
 				<td>{{ $contact->mobile }}</td>
 				<td>{{ $contact->landline}}</td>
 				<td>{{  Carbon\Carbon::parse($contact->created_at)->format('d-m-Y') }}</td>
-				<td> <a href="fetch/contact/{{$contact->id}}"><i class="fa fa-th" aria-hidden="true"></i></a> </td>
 			</tr>
+			<div id="contact{{$contact->id}}" class="modal fade" role="dialog">
+				 <div class="modal-dialog">
+    
+			      <!-- Modal content-->
+			    	<div class="modal-content">
+						<div class="modal-header">
+				      		<button type="button" class="close" data-dismiss="modal">&times;</button>
+				      	</div>
+				      	<div class="modal-body">
+				      		<img src="{{ $contact->image_url }}">
+				      		<p>First Name: {{ $contact->first_name }}</p>
+				      		<p>Middle Name: {{ $contact->middle_name }}</p>
+				      		<p>Last Name: {{ $contact->last_name }}</p>
+				      		<p>Email: {{ $contact->email }}</p>
+				      		<p>Mobile: {{ $contact->mobile }}</p>
+				      		<p>Landline: {{ $contact->landline }}</p>
+				      		<p>Notes: {{ $contact->note }}</p>
+				      		<p>Total Views: <span class="total_views"></span>  </p>
+				      	</div>
+					</div>
+				</div>
+			</div>
 			@endforeach
 		</tbody>
 	</table>

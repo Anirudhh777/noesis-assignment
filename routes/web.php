@@ -34,4 +34,4 @@ Route::post('/login', 'UserController@login');
 Route::post('/register', 'UserController@register');
 Route::get('/logout', 'UserController@logout');
 Route::post('/contact/insert', 'ContactsController@insert');
-Route::get('/fetch/contact/{id}', 'ContactsController@fetch');
+Route::get('/fetch/count/{id}', 'ContactsController@fetch');

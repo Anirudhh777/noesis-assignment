@@ -83,4 +83,13 @@ $(document).ready( function() {
 	$('#list').DataTable({"paging": false});
 	$('.dataTables_length').addClass('bs-select');
 	
+	$(".rowtest").click( function(e){
+		e.preventDefault();
+		url = encodeURI("/fetch/count/" + $(this).data("contact"));
+		id = $(this).data("target");
+		$.get(url, function(data, status){
+		    $(".total_views").html(data);
+		    $(id).modal();
+		  });
+	});
 });
