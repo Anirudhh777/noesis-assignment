@@ -22,6 +22,7 @@
 	      	<div class="modal-body">
 	      		<h1>Add New Contact</h1>
 	      		<form role="form" method="POST" action="{{ secure_url('/contact/insert') }}" class="newcontact" enctype="multipart/form-data" id="contactform">
+	      			{{ csrf_field() }}
 	      			<div class="contact-field">
 	      				<label>First Name*</label>
 	      				<input type="text" name="first_name" class="form-control">
@@ -51,7 +52,7 @@
 				        <div class="input-group">
 				            <span class="input-group-btn">
 				                <span class="btn btn-default btn-file">
-				                    Select <input type="file" id="imgInp">
+				                    Select <input type="file" id="imgInp" name="contact_image">
 				                </span>
 				            </span>
 				            <input type="text" class="form-control" readonly placeholder="No File Selected">

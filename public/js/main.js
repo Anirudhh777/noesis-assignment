@@ -1,5 +1,9 @@
 $(document).ready( function() {
 
+	$.validator.addMethod('filesize', function(value, element, param) {
+	    return this.optional(element) || (element.files[0].size <= param) 
+	});
+
 	$("#contactform").validate({
 	    ignore: [],
 	    rules: {
@@ -29,11 +33,16 @@ $(document).ready( function() {
 		    	maxlength: 10,
 		    	number: true,
 		    	required: false
+		    },
+		    contact_image: {
+		    	required: false,
+		    	extension: "png|jpeg|jpg|gif",
+		    	filesize: 1000 * 512,  
 		    }
 	      },
+	      messages: { contact_image: "File must be JPG, GIF or PNG, less than 500Kb" },
 	      submitHandler: function(form) {
 	         document.getElementById("contactform").submit();
-	          // grecaptcha.execute();
 	      }
 	  });
 

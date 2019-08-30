@@ -31,3 +31,4 @@ Route::get('/dashboard', function () {
 Route::post('/login', 'UserController@login');
 Route::post('/register', 'UserController@register');
 Route::get('/logout', 'UserController@logout');
+Route::post('/contact/insert', 'ContactsController@insert');
