@@ -24,10 +24,6 @@ Route::get('/reset-password', function () {
     return view('index');
 })->name('reset-password');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard')->middleware('auth');
-
 Route::get('/dashboard', 'ContactsController@index')->name('dashboard')->middleware('auth');
 
 Route::post('/login', 'UserController@login');

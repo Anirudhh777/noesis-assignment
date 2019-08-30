@@ -5,7 +5,7 @@
 	<div class="dash-links">
 		<ul>
 			<a href="" data-toggle="modal" data-target="#insertmodal"><li> Add Contact</li></a> 
-			<a href="{{ secure_url('/logout') }}"><li>Logout</li></a>
+			<a href="{{ url('/logout') }}"><li>Logout</li></a>
 		</ul>
 	</div>
 </div>
@@ -68,7 +68,7 @@
 	      	</div>
 	      	<div class="modal-body">
 	      		<h1>Add New Contact</h1>
-	      		<form role="form" method="POST" action="{{ secure_url('/contact/insert') }}" class="newcontact" enctype="multipart/form-data" id="contactform">
+	      		<form role="form" method="POST" action="{{ url('/contact/insert') }}" class="newcontact" enctype="multipart/form-data" id="contactform">
 	      			{{ csrf_field() }}
 	      			<div class="contact-field">
 	      				<label>First Name*</label>
