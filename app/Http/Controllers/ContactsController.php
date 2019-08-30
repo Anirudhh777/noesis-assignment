@@ -10,17 +10,19 @@ use Auth;
 use Guzzle;
 use Session;
 use Storage;
+use View;
 
 class ContactsController extends Controller
 {
 
 	protected function index(){
-
+		$contacts = DB::table("contacts")->where('user_id', Auth::user()->id)->get();
+		return view('dashboard')->with('contacts', $contacts);
 	}
 
 	protected function insert(Request $request){
 		$url = $this->file_upload($request);
-		DB::table("contacts")->insert(['first_name' => $request->first_name, 'middle_name' => $request->middle_name, 'last_name' => $request->last_name, 'mobile' => $request->mobile, 'landline' => $request->landline, 'email' => $request->email, 'note' => $request->notes, 'image_url' => $url, 'created_at' =>  \Carbon\Carbon::now()]);
+		DB::table("contacts")->insert(['first_name' => $request->first_name, 'middle_name' => $request->middle_name, 'last_name' => $request->last_name, 'mobile' => $request->mobile, 'landline' => $request->landline, 'email' => $request->email, 'note' => $request->notes, 'image_url' => $url, 'user_id' =>  Auth::user()->id, 'created_at' =>  \Carbon\Carbon::now()]);
 		return Redirect::back();
 	}
 
@@ -35,5 +37,9 @@ class ContactsController extends Controller
 		}else{
 			return null;
 		}
+	}
+
+	protected function fetch($id){
+		Log::info($id);
 	}	
 }

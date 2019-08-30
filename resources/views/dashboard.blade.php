@@ -10,6 +10,36 @@
 	</div>
 </div>
 
+<div class="container contacts">
+	<table class="table table-bordered table-striped " id="list">
+		<thead>
+			<tr>
+				<th >F. Name <i class="fas fa-sort ml-1"></i></th>
+				<th>L. Name <i class="fas fa-sort ml-1"></i></th>
+				<th>Email <i class="fas fa-sort ml-1"></i></th>
+				<th>Mobile <i class="fas fa-sort ml-1"></i></th>
+				<th>Landline <i class="fas fa-sort ml-1"></i></th>
+				<th>Date <i class="fas fa-sort ml-1"></i></th>
+				<th>View</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach($contacts as $contact)
+			<tr>
+				<td>{{ $contact->first_name }}</td>
+				<td>{{ $contact->last_name }}</td>
+				<td>{{ $contact->email }}</td>
+				<td>{{ $contact->mobile }}</td>
+				<td>{{ $contact->landline}}</td>
+				<td>{{  Carbon\Carbon::parse($contact->created_at)->format('d-m-Y') }}</td>
+				<td> <a href="fetch/contact/{{$contact->id}}"><i class="fa fa-th" aria-hidden="true"></i></a> </td>
+			</tr>
+			@endforeach
+		</tbody>
+	</table>
+</div>
+
+
 
 <div class="modal fade insert-modal" id="insertmodal" role="dialog">
     <div class="modal-dialog">
