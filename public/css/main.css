@@ -368,3 +368,72 @@ p, h1, h2, h3, h4, h5, li, a, span, label {
   color: #900b2e;
 }
 
+.dash-nav{
+      background-color: #f6f6f6;
+    border-bottom: 0.1px solid #dce8f1;
+    height: 55px;
+    position: relative;
+    padding: 14px 0px;
+   
+}
+
+.dash-links{
+  position: absolute;
+  right: 20px;
+}
+
+.dash-links ul li{
+  font-size: 14px;
+    display: inline-block;
+    padding: 0px 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #212121;
+}
+
+.insert-modal h1{
+  font-size: 16px;
+    padding: 0px 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #212121;
+    text-align: center;
+}
+
+.contact-field{
+  margin-bottom: 10px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#img-upload{
+    width: 100%;
+}
+
+.form-control:disabled, .form-control[readonly]{
+  background-color: #fff !important;
+}
+
+.newcontact .error{
+  color: #fd4c41;
+}

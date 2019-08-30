@@ -26,7 +26,8 @@ Route::get('/reset-password', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth');
 
-Route::post('/register', 'UserController@register');
 Route::post('/login', 'UserController@login');
+Route::post('/register', 'UserController@register');
+Route::get('/logout', 'UserController@logout');
