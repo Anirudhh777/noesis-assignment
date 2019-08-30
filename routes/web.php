@@ -23,3 +23,10 @@ Route::get('/register', function () {
 Route::get('/reset-password', function () {
     return view('index');
 })->name('reset-password');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::post('/register', 'UserController@register');
+Route::post('/login', 'UserController@login');

@@ -13,13 +13,12 @@
 
     </head>
     <body>
-        <div class="header">
-            
-        </div>
+        
         @yield('main')
         
-        <div class="footer">
-            
-        </div>
+        
     </body>
+    <footer>
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap" rel="stylesheet">
+    </footer>
 </html>

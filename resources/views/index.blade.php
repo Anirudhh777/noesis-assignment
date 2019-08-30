@@ -13,6 +13,8 @@
 			    </form>
 			    @if(!empty(Session::get('error_code')) && Session::get('error_code') == 2)
 						<p class="login-error">Credentials do not match, please try again.</p>
+				@elseif(!empty(Session::get('error_code')) && Session::get('error_code') == 3)
+						<p class="login-error">Registeration Succesfull, please login above</p>
 				@endif
 			    <div id="formFooter">
 			    	<a class="underlineHover reg-link" href="{{ secure_url('/register') }}">Register</a>
@@ -26,6 +28,9 @@
 			      	<input type="password" class="fadeIn third" name="password" placeholder="password" required="">
 			      	<input type="submit" class="fadeIn fourth" value="Register">
 			    </form>
+			     @if(!empty(Session::get('error_code')) && Session::get('error_code') == 2)
+						<p class="login-error">Email Already Registered</p>
+				@endif
 			    <div id="formFooter">
 			    	<a class="underlineHover reg-link" href="{{ secure_url('/') }}">Login</a>
 			     	 <a class="underlineHover pass-link" href="{{ secure_url('/password/reset') }}">Forgot Password?</a>

@@ -1,4 +1,8 @@
-
+p, h1, h2, h3, h4, h5, li, a, span, label {
+    font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
 
 
 .admin a {
@@ -358,5 +362,9 @@
     border: initial;
     margin: initial;
     margin-bottom: initial;
+}
+
+.login-error{
+  color: #900b2e;
 }
 
