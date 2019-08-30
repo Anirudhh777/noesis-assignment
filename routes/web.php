@@ -13,4 +13,13 @@
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
+
+Route::get('/register', function () {
+    return view('index');
+})->name('register');
+
+
+Route::get('/reset-password', function () {
+    return view('index');
+})->name('reset-password');
