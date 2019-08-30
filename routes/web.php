@@ -12,21 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+	return view('index');
 })->name('home');
 
 Route::get('/register', function () {
-    return view('index');
+	return view('index');
 })->name('register');
 
 
 Route::get('/reset-password', function () {
-    return view('index');
+	return view('index');
 })->name('reset-password');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard')->middleware('auth');
+
+Route::get('/dashboard', 'ContactsController@index')->name('dashboard')->middleware('auth');
 
 Route::post('/login', 'UserController@login');
 Route::post('/register', 'UserController@register');

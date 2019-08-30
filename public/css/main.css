@@ -1,7 +1,7 @@
 p, h1, h2, h3, h4, h5, li, a, span, label {
-    font-family: 'Lato', sans-serif;
-    -webkit-font-smoothing: antialiased !important;
-    -moz-osx-font-smoothing: grayscale !important;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 
 
@@ -51,16 +51,16 @@ p, h1, h2, h3, h4, h5, li, a, span, label {
 }
 
 .admin #formFooter {
-    border-top: 1px solid #dce8f1;
-    padding: 6px 15px;
-    text-align: center;
-    height: 30px;
+  border-top: 1px solid #dce8f1;
+  padding: 6px 15px;
+  text-align: center;
+  height: 30px;
 }
 
 
 .admin #formFooter a{
-      text-transform: uppercase;
-      font-size: 12px;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
 .reg-link{
@@ -264,7 +264,7 @@ p, h1, h2, h3, h4, h5, li, a, span, label {
 /* OTHERS */
 
 *:focus {
-    outline: none;
+  outline: none;
 } 
 
 #icon {
@@ -279,7 +279,7 @@ p, h1, h2, h3, h4, h5, li, a, span, label {
 
 .admin-dash .dash-box a{
   width: 100%;
-   margin: 10px 0px;
+  margin: 10px 0px;
 }
 
 .admin-dash #formContent{
@@ -288,21 +288,21 @@ p, h1, h2, h3, h4, h5, li, a, span, label {
 }
 
 .admin-dash .event-box{
-    margin: 10px;
-    padding: 10px;
-    height: 60px;
+  margin: 10px;
+  padding: 10px;
+  height: 60px;
 
 }
 
 .admin-dash .event-box h1{
   text-align: left;
-    font-size: 23px;
-    width: fit-content;
-    text-transform: uppercase;
-    display: inline-block;
-    vertical-align: -webkit-baseline-middle;
-    float: left;
-        margin-bottom: 0px;
+  font-size: 23px;
+  width: fit-content;
+  text-transform: uppercase;
+  display: inline-block;
+  vertical-align: -webkit-baseline-middle;
+  float: left;
+  margin-bottom: 0px;
 }
 
 .admin-dash .event-box a{
@@ -327,12 +327,12 @@ p, h1, h2, h3, h4, h5, li, a, span, label {
 }
 
 .admin-panel a{
-      display: block;
-    padding: 10px 20px;
-    width: 200px;
-    border: 1px solid black;
-    margin: 0 auto;
-    margin-bottom: 20px;
+  display: block;
+  padding: 10px 20px;
+  width: 200px;
+  border: 1px solid black;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .admin-panel table td{
@@ -341,27 +341,27 @@ p, h1, h2, h3, h4, h5, li, a, span, label {
 
 .admin-panel h2{
   font-size: 30px;
-    display: inline-block;
-    padding: 0px 20px;
-    text-transform: uppercase;
-    font-weight: 500;
-    letter-spacing: 2px;
-    color: #212121;
-    margin-bottom: 21px;
+  display: inline-block;
+  padding: 0px 20px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #212121;
+  margin-bottom: 21px;
 }
 
 .admin-panel .view a{
-      display: inline-block !important;
+  display: inline-block !important;
 
 }
 
 .admin-panel td a{
   display: initial;
-    padding: initial;
-    width: initial;
-    border: initial;
-    margin: initial;
-    margin-bottom: initial;
+  padding: initial;
+  width: initial;
+  border: initial;
+  margin: initial;
+  margin-bottom: initial;
 }
 
 .login-error{
@@ -369,12 +369,12 @@ p, h1, h2, h3, h4, h5, li, a, span, label {
 }
 
 .dash-nav{
-      background-color: #f6f6f6;
-    border-bottom: 0.1px solid #dce8f1;
-    height: 55px;
-    position: relative;
-    padding: 14px 0px;
-   
+  background-color: #f6f6f6;
+  border-bottom: 0.1px solid #dce8f1;
+  height: 55px;
+  position: relative;
+  padding: 14px 0px;
+  
 }
 
 .dash-links{
@@ -384,22 +384,22 @@ p, h1, h2, h3, h4, h5, li, a, span, label {
 
 .dash-links ul li{
   font-size: 14px;
-    display: inline-block;
-    padding: 0px 20px;
-    text-transform: uppercase;
-    font-weight: 500;
-    letter-spacing: 2px;
-    color: #212121;
+  display: inline-block;
+  padding: 0px 20px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #212121;
 }
 
 .insert-modal h1{
   font-size: 16px;
-    padding: 0px 20px;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    color: #212121;
-    text-align: center;
+  padding: 0px 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #212121;
+  text-align: center;
 }
 
 .contact-field{
@@ -407,27 +407,27 @@ p, h1, h2, h3, h4, h5, li, a, span, label {
 }
 
 .btn-file {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 .btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
 }
 
 #img-upload{
-    width: 100%;
+  width: 100%;
 }
 
 .form-control:disabled, .form-control[readonly]{
