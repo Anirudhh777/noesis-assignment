@@ -4,6 +4,8 @@
 <div class="dash-nav">
 	<div class="dash-links">
 		<ul>
+			<a href="{{ url('/faker_data') }}"><li> Generate Contacts</li></a> 
+			<a href="{{ url('/faker_view_data') }}"><li> Generate Views</li></a> 
 			<a href="" data-toggle="modal" data-target="#insertmodal"><li> Add Contact</li></a> 
 			<a href="{{ url('/logout') }}"><li>Logout</li></a>
 		</ul>
@@ -22,41 +24,47 @@
 		</thead>
 		<tbody>
 			@foreach($contacts as $contact)
-			<input type="hidden" name="contact_id" value="{{$contact->id}}">
 			<tr data-target="#contact{{$contact->id}}" data-contact="{{$contact->id}}" class="rowtest">
 				<td>{{ $contact->first_name }} {{ $contact->last_name }}</td>
 				<td>{{ $contact->mobile }}</td>
 				<td>{{ $contact->landline}}</td>
 				<td>{{  Carbon\Carbon::parse($contact->created_at)->format('d-m-Y') }}</td>
 			</tr>
-			<div id="contact{{$contact->id}}" class="modal fade" role="dialog" tabindex='-1'>
-				 <div class="modal-dialog">
-    
-			      <!-- Modal content-->
-			    	<div class="modal-content">
-						<div class="modal-header">
-				      		<button type="button" class="close" data-dismiss="modal">&times;</button>
-				      	</div>
-				      	<div class="modal-body">
-				      		<img src="{{ $contact->image_url }}" class="contactimg">
-				      		<p>First Name: {{ $contact->first_name }}</p>
-				      		<p>Middle Name: {{ $contact->middle_name }}</p>
-				      		<p>Last Name: {{ $contact->last_name }}</p>
-				      		<p>Email: {{ $contact->email }}</p>
-				      		<p>Mobile: {{ $contact->mobile }}</p>
-				      		<p>Landline: {{ $contact->landline }}</p>
-				      		<p>Notes: {{ $contact->note }}</p>
-				      		<p>Total Views: <span class="total_views"></span>  </p>
-				      	</div>
-					</div>
-				</div>
-			</div>
 			@endforeach
 		</tbody>
 	</table>
 </div>
 
+<div id="contactmodal" class="modal fade" role="dialog" tabindex='-1'>
+	 <div class="modal-dialog">
 
+      <!-- Modal content-->
+    	<div class="modal-content">
+			<div class="modal-header">
+	      		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	      	</div>
+	      	<div class="modal-body">
+	      		<div class="contact-info">
+	      			<img src="" class="contactimg">
+		      		<p>First Name: <span class="fname"></span></p>
+		      		<p>Middle Name: <span class="mname"></span></p>
+		      		<p>Last Name: <span class="lname"></span></p>
+		      		<p>Email: <span class="email"></span></p>
+		      		<p>Mobile: <span class="mobile"></span></p>
+		      		<p>Landline: <span class="landline"></span></p>
+		      		<p>Notes: <span class="note"></span></p>
+		      		<p>Total Views: <span class="total_views"></span>  </p>
+		      		<a href="" class="fetch_history">Fetch Contact View History</a>
+	      		</div>
+	      		<div class="viewhistory">
+	      			<canvas  width="400" height="400" class="chartinfo"></canvas>
+	      			<a href="" class="close_canvas">Go Back</a>
+	      		</div>
+	      		
+	      	</div>
+		</div>
+	</div>
+</div>
 
 <div class="modal fade insert-modal" id="insertmodal" role="dialog">
     <div class="modal-dialog">

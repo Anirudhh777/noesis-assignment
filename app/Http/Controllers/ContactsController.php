@@ -42,7 +42,9 @@ class ContactsController extends Controller
 	protected function fetch($id){
 		$this->update_count($id);
 		$total_views = DB::table('views')->where('contact_id', $id)->sum('count');
-		return $total_views;
+		$contact = DB::table('contacts')->where('id', $id)->first();
+		$data = array($total_views, (array) $contact);
+		return $data;
 
 	}
 
@@ -60,13 +62,12 @@ class ContactsController extends Controller
 		$date = date("Y/m/d");
 		$days = array();
 		$views = $this->count_views($id, $date);
-		$days[date("D")] = $views;
+		$days[0] = array('day' => date("D"), 'views' => $views);
 		for ($i=1; $i < 7; $i++) { 
 			$prev_day = date("Y/m/d", strtotime('-'.$i.'days', strtotime($date)));
 			$prev_views = $this->count_views($id, $prev_day);
-			$days[date("D", strtotime('-'.$i.'days', strtotime(date("D"))))] = $prev_views;
+			$days[$i] = array('day' => date("D", strtotime('-'.$i.'days', strtotime(date("D")))), 'views' => $prev_views);
 		}
-		Log::info($days);
 		return $days;
 	}	
 

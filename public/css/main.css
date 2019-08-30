@@ -457,3 +457,11 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before
 .contactimg{
   max-width: 100%;
 }
+
+.hiddenRow {
+    padding: 0 !important;
+}
+
+.viewhistory{
+  display: none;
+}
