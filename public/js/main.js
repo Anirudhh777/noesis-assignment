@@ -98,64 +98,92 @@ $(document).ready( function() {
 		    $(".landline").html(data[1]['landline']);
 		    $(".note").html(data[1]['note']);
 		    $("#contactmodal").modal();
-		    $('.fetch_history').attr("data-contact",data[1]['id']);
-		    $('.chartinfo').attr("id", "myChart"+data[1]['id']);
+		    $('.fetch_history').attr("data-id",data[1]['id']);
+		    // $('.chartinfo').attr("id", "myChart"+data[1]['id']);
 		  });
 	});
 
+	var ctx = document.getElementById('myChart');
+	var myChart = new Chart(ctx, {
+	    type: 'bar',
+	    data: {
+	        labels: [1, 2, 3, 4, 5, 6, 7],
+	        datasets: [{
+	            label: 'views',
+	            data: [1, 2, 3, 4, 5, 6, 7],
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	        scales: {
+	            yAxes: [{
+	                ticks: {
+	                    beginAtZero: true
+	                }
+	            }]
+	        }
+	    }
+	});
+
+	function updateConfigAsNewObject(chart, label, data1) {
+	    chart.data = {
+	    	labels: label,
+	    	datasets: [{
+	            label: 'views',
+	            data: data1,
+	            backgroundColor: [
+	                'rgba(255, 99, 132, 0.2)',
+	                'rgba(54, 162, 235, 0.2)',
+	                'rgba(255, 206, 86, 0.2)',
+	                'rgba(75, 192, 192, 0.2)',
+	                'rgba(153, 102, 255, 0.2)',
+	                'rgba(255, 159, 64, 0.2)'
+	            ],
+	            borderColor: [
+	                'rgba(255, 99, 132, 1)',
+	                'rgba(54, 162, 235, 1)',
+	                'rgba(255, 206, 86, 1)',
+	                'rgba(75, 192, 192, 1)',
+	                'rgba(153, 102, 255, 1)',
+	                'rgba(255, 159, 64, 1)'
+	            ],
+	            borderWidth: 1
+	        }]
+	    }
+	    chart.update(0);
+	}
+
+	function removeData(chart) {
+	    chart.data.labels.pop();
+	    chart.data.datasets.forEach((dataset) => {
+	        dataset.data.pop();
+	    });
+	    chart.reset();
+	}
+
 	$(".fetch_history").click( function(e){
 		e.preventDefault();
-		url = encodeURI("/fetch/view/history/" + $(this).data("contact"));
-		id = "myChart"+$(this).data("contact");
-		$.get(url, function(data, status){
-			var ctx = document.getElementById(id);
-			var myChart = new Chart(ctx, {
-			    type: 'bar',
-			    data: {
-			        labels: [data[0]['day'], data[1]['day'], data[2]['day'], data[3]['day'], data[4]['day'], data[5]['day'], data[6]['day']],
-			        datasets: [{
-			            label: 'views',
-			            data: [data[0]['views'], data[1]['views'], data[2]['views'], data[3]['views'], data[4]['views'], data[5]['views'], data[6]['views']],
-			            backgroundColor: [
-			                'rgba(255, 99, 132, 0.2)',
-			                'rgba(54, 162, 235, 0.2)',
-			                'rgba(255, 206, 86, 0.2)',
-			                'rgba(75, 192, 192, 0.2)',
-			                'rgba(153, 102, 255, 0.2)',
-			                'rgba(255, 159, 64, 0.2)'
-			            ],
-			            borderColor: [
-			                'rgba(255, 99, 132, 1)',
-			                'rgba(54, 162, 235, 1)',
-			                'rgba(255, 206, 86, 1)',
-			                'rgba(75, 192, 192, 1)',
-			                'rgba(153, 102, 255, 1)',
-			                'rgba(255, 159, 64, 1)'
-			            ],
-			            borderWidth: 1
-			        }]
-			    },
-			    options: {
-			        scales: {
-			            yAxes: [{
-			                ticks: {
-			                    beginAtZero: true
-			                }
-			            }]
-			        }
-			    }
-			});
+		url_new = encodeURI("/fetch/view/history/" + document.getElementById('fetchtest').getAttribute('data-id'));
+		$.get(url_new, function(data, status){	
+			labels = [data[0]['day'], data[1]['day'], data[2]['day'], data[3]['day'], data[4]['day'], data[5]['day'], data[6]['day']];
+			dataset = [data[0]['views'], data[1]['views'], data[2]['views'], data[3]['views'], data[4]['views'], data[5]['views'], data[6]['views']];
+			removeData(myChart);
+			updateConfigAsNewObject(myChart, labels , dataset);
 		});
 		$('.contact-info').slideUp('slow');
 		$('.viewhistory').show();
 	});
 
 	$(".close_canvas").click( function(e){
-		e.preventDefault();
-		Chart.helpers.each(Chart.instances, function(instance){
-		  instance.clear();
-		})		
-		$('.viewhistory').slideUp('slow');
+		e.preventDefault();	
+		removeData(myChart);
+		$('.viewhistory').hide();
 		$('.contact-info').show();
+	});
+
+	$("#contactmodal").on("hidden.bs.modal", function () {
+		removeData(myChart);
+		$('.viewhistory').hide();
+		$('.contact-info').show();		
 	});
 });

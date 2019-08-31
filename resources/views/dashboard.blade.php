@@ -54,10 +54,10 @@
 		      		<p>Landline: <span class="landline"></span></p>
 		      		<p>Notes: <span class="note"></span></p>
 		      		<p>Total Views: <span class="total_views"></span>  </p>
-		      		<a href="" class="fetch_history">Fetch Contact View History</a>
+		      		<a href="" class="fetch_history" id="fetchtest">Fetch Contact View History</a>
 	      		</div>
 	      		<div class="viewhistory">
-	      			<canvas  width="400" height="400" class="chartinfo"></canvas>
+	      			<canvas  id="myChart" width="400" height="400" class="chartinfo"></canvas>
 	      			<a href="" class="close_canvas">Go Back</a>
 	      		</div>
 	      		
