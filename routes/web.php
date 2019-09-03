@@ -13,11 +13,11 @@
 
 Route::get('/', function () {
     return view('index');
-})->name('home');
+})->name('home')->middleware('guest');
 
 Route::get('/register', function () {
     return view('index');
-})->name('register');
+})->name('register')->middleware('guest');
 
 
 Route::get('/reset-password', function () {

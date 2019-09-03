@@ -1,6 +1,8 @@
 @extends('app')
 @section('main')
 
+
+
 <div class="dash-nav">
 	<div class="dash-links">
 		<ul>
@@ -11,7 +13,6 @@
 		</ul>
 	</div>
 </div>
-
 <div class="container contacts">
 	<table class="table table-bordered table-striped " id="list">
 		<thead>

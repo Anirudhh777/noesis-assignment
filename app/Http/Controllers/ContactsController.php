@@ -21,10 +21,12 @@ class ContactsController extends Controller
 	}
 
 	protected function insert(Request $request){
-		$url = $this->file_upload($request);
+		$url = $this->file_upload($request); 
 		DB::table("contacts")->insert(['first_name' => $request->first_name, 'middle_name' => $request->middle_name, 'last_name' => $request->last_name, 'mobile' => $request->mobile, 'landline' => $request->landline, 'email' => $request->email, 'note' => $request->notes, 'image_url' => $url, 'user_id' =>  Auth::user()->id, 'created_at' =>  \Carbon\Carbon::now()]);
 		return Redirect::back();
 	}
+
+	//Check whether request has file upload, if yes then fetch file, set path and upload to S3 bucket. Return Image URL. 
 
 	protected function file_upload($data){
 		if($data->hasFile('contact_image')){
@@ -39,6 +41,8 @@ class ContactsController extends Controller
 		}
 	}
 
+	// Updating View Count and then Fetching the Total View Count for a Contact, Returning along with Contact Data
+
 	protected function fetch($id){
 		$this->update_count($id);
 		$total_views = DB::table('views')->where('contact_id', $id)->sum('count');
@@ -47,6 +51,11 @@ class ContactsController extends Controller
 		return $data;
 
 	}
+
+
+	// Checking if Row with Contact ID & Current Data Exist in Views Table, if exists then updating View Count, if not then inserting new Row.
+
+	// Using the Date field in Views table to collect/count all views for a Contact for a particular date in a Single Row rather than have a new Row for every View.
 
 	protected function update_count($id){
 		$date = date("Y/m/d");
@@ -57,6 +66,10 @@ class ContactsController extends Controller
 			DB::table('views')->insert(['count' => 1, 'date' => $date, 'contact_id' => $id, 'created_at' =>  \Carbon\Carbon::now()]);
 		}
 	}
+
+	// Fetching Contact View Count for the past 7 Days.
+	// Current Date View Count is Fetched and stored in Days Array
+	// Using Date format inside a Loop to itterate through past 7 Days. 
 
 	protected function view_history($id){
 		$date = date("Y/m/d");
@@ -70,6 +83,8 @@ class ContactsController extends Controller
 		}
 		return $days;
 	}	
+
+	// Receiving Contact ID and Date from View History to fetch Contact View Count for the particular date. 
 
 	protected function count_views($id, $date){
 		if(DB::table('views')->where('contact_id', $id)->where('date', $date)->exists()){

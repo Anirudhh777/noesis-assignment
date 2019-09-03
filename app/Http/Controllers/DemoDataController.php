@@ -15,6 +15,10 @@ use Faker;
 
 class DemoDataController extends Controller
 {
+
+    // Using Faker to insert 20 Random Contacts into DB under current Logged in User. 
+    // Using Carbon subDays with rand to randomize timestamp for Contact. 
+
     protected function index(){
     	$id = Auth::user()->id;
     	$faker = Faker\Factory::create();
@@ -23,6 +27,11 @@ class DemoDataController extends Controller
     	}
     	return redirect()->to('/dashboard');
     }
+
+    // Fecthing all Contacts for Logged in User. 
+    // Itterating through every Contact Fetched. 
+    // Running a Loop for each individual Contact with a Random Value for Test Counter so it can insert different number of views for each Contact. 
+    // Randomly Selecting a day from current date to last 7 Days in each itteration to insert a view. 
 
     protected function views(){
     	$id = Auth::user()->id;
